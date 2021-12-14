@@ -3337,7 +3337,7 @@
         "type": "function",
         "z": "398c27d8cfa27d04",
         "name": "Analysis of Saves",
-        "func": "//Analysis of Saves\n//let baseName = \"savedGlowMessages\"\nlet baseName = \"MessageSaves\"\nmsg.payload = [];\nmsg.options = [];\nlet cnt = 0\nlet varName = baseName + \"\";\nlet save = flow.get(varName);\nsave = flow.get(varName);\nfunction timeDiff(hh, mm) {\n\tlet nowDate = new Date();\n\tnowDate.setHours(0, 0, 0);\n\tlet toDate = new Date(nowDate);\n\ttoDate.setHours(hh, mm);\n\t// @ts-ignore\n\treturn (new Date(toDate - nowDate));\n}\nwhile (save) {\n\tif (save[0].saveTime) {\n\t\tmsg.payload.push({\n\t\t\tname: varName, startDate: save[0].saveTime.toDateString(), startTime: save[0].saveTime.toTimeString(),\n\t\t\tendDate: save[save.length - 1].saveTime.toDateString(), endTime: save[save.length - 1].saveTime.toTimeString(), length: save.length\n\t\t});\n\t\tmsg.options.push({\n\t\t\t[varName]: {\n\t\t\t\tstartDate: save[0].saveTime.toDateString(),\n\t\t\t\tstartTime: timeDiff(save[0].saveTime.getHours(), save[0].saveTime.getMinutes()),\n\t\t\t\tendDate: save[save.length - 1].saveTime.toDateString(),\n\t\t\t\tendTime: timeDiff(save[save.length - 1].saveTime.getHours(), save[save.length - 1].saveTime.getMinutes()),\n\t\t\t}\n\t\t});\n\t} else {\n\t\tmsg.payload.push({ name: varName, length: save.length });\n\t\tmsg.options.push({ [varName]: { name: varName } });\n\t}\n\tif (varName == baseName) {\n\t\tvarName = \"old_\" + baseName;\n\t} else {\n\t\tcnt++;\n\t\tvarName = \"old_\" + baseName + \"_\" + cnt;\n\t}\n\tsave = flow.get(varName);\n}\n\nreturn msg;",
+        "func": "//Analysis of Savesaa\n//let baseName = \"savedGlowMessages\"\nlet baseName = \"MessageSaves\"\nmsg.payload = [];\nmsg.options = [];\nlet cnt = 0\nlet varName = baseName + \"\";\nlet save = flow.get(varName);\nsave = flow.get(varName);\nfunction timeDiff(hh, mm) {\n\tlet nowDate = new Date();\n\tnowDate.setHours(0, 0, 0);\n\tlet toDate = new Date(nowDate);\n\ttoDate.setHours(hh, mm);\n\t// @ts-ignore\n\treturn (new Date(toDate - nowDate));\n}\nwhile (save) {\n\tif (save[0].saveTime) {\n\t\tmsg.payload.push({\n\t\t\tname: varName, startDate: save[0].saveTime.toDateString(), startTime: save[0].saveTime.toTimeString(),\n\t\t\tendDate: save[save.length - 1].saveTime.toDateString(), endTime: save[save.length - 1].saveTime.toTimeString(), length: save.length\n\t\t});\n\t\tmsg.options.push({\n\t\t\t[varName]: {\n\t\t\t\tstartDate: save[0].saveTime.toDateString(),\n\t\t\t\tstartTime: timeDiff(save[0].saveTime.getHours(), save[0].saveTime.getMinutes()),\n\t\t\t\tendDate: save[save.length - 1].saveTime.toDateString(),\n\t\t\t\tendTime: timeDiff(save[save.length - 1].saveTime.getHours(), save[save.length - 1].saveTime.getMinutes()),\n\t\t\t}\n\t\t});\n\t} else {\n\t\tmsg.payload.push({ name: varName, length: save.length });\n\t\tmsg.options.push({ [varName]: { name: varName } });\n\t}\n\tif (varName == baseName) {\n\t\tvarName = \"old_\" + baseName;\n\t} else {\n\t\tcnt++;\n\t\tvarName = \"old_\" + baseName + \"_\" + cnt;\n\t}\n\tsave = flow.get(varName);\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4834,11 +4834,12 @@
             "07ce32156e3809c9",
             "f34bfffc2b5fc5e6"
         ],
-        "x": 495,
-        "y": 380,
+        "x": 315,
+        "y": 360,
         "wires": [
             [
-                "e9fe4c3b15776ece"
+                "e9fe4c3b15776ece",
+                "33018bcdb15ad4ac"
             ]
         ]
     },
@@ -5084,7 +5085,7 @@
         "id": "a4235a329f37674c",
         "type": "inject",
         "z": "2b0356c1d2b6f949",
-        "name": "",
+        "name": "start immed",
         "props": [
             {
                 "p": "payload"
@@ -5363,8 +5364,8 @@
         "statusCmd": "status",
         "persist": false,
         "storeName": "memory",
-        "x": 1560,
-        "y": 560,
+        "x": 480,
+        "y": 420,
         "wires": [
             []
         ]
@@ -5402,7 +5403,7 @@
         "id": "09fa0c8321921631",
         "type": "inject",
         "z": "2b0356c1d2b6f949",
-        "name": "",
+        "name": "Start 1s",
         "props": [
             {
                 "p": "payload"
@@ -5418,7 +5419,7 @@
         "onceDelay": "1",
         "topic": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 130,
         "y": 620,
         "wires": [
             [
