@@ -29,7 +29,7 @@
         "env": []
     },
     {
-        "id": "2b0356c1d2b6f949",
+        "id": "910cb7f1e9a01c80",
         "type": "tab",
         "label": "esp mgt",
         "disabled": false,
@@ -782,7 +782,7 @@
         "type": "ui_tab",
         "name": "New Gauges",
         "icon": "dashboard",
-        "order": 2,
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -895,7 +895,7 @@
         "type": "ui_tab",
         "name": "Glow Market",
         "icon": "dashboard",
-        "order": 3,
+        "order": 4,
         "disabled": false,
         "hidden": false
     },
@@ -1036,13 +1036,43 @@
         "collapse": false
     },
     {
-        "id": "a0985848d684ca6b",
+        "id": "879853c9cbbf6102",
         "type": "ui_tab",
         "name": "ESP Management",
         "icon": "dashboard",
-        "order": 4,
+        "order": 2,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "2c0327def1d1c166",
+        "type": "ui_group",
+        "name": "esp table",
+        "tab": "879853c9cbbf6102",
+        "order": 1,
+        "disp": false,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "bbcc15c7065be440",
+        "type": "ui_group",
+        "name": "MAC Addresses",
+        "tab": "879853c9cbbf6102",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "ae7db8c4abafff28",
+        "type": "ui_group",
+        "name": "BLE Devices",
+        "tab": "879853c9cbbf6102",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
     },
     {
         "id": "9ed27ccb5883116e",
@@ -4183,9 +4213,9 @@
         ]
     },
     {
-        "id": "83d321d87bafb34a",
+        "id": "b36a9495fcaaf6f5",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Init_esp_services",
         "func": "//Init_esp_services\nlet espServices = global.get(\"espServices\");\nif (espServices) {\n\tnode.warn( [ \"[\" + node.name + \"][info] espServices exists\", espServices]);\n\treturn null\n}\n\n\nespServices = {\t\"BTRelay\": true,\n\t\t\t\t\"MovmentSensor\": true,\n\t\t\t\t\"TempSensor\": true,\n\t\t\t\t\"ESPHome\":\ttrue\n\t\t\t\t}\nglobal.set(\"espServices\",espServices);\nnode.warn( [ \"[\" + node.name + \"][info] espServices created \", espServices]);\n\nreturn msg;",
         "outputs": 1,
@@ -4193,16 +4223,16 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1390,
-        "y": 20,
+        "x": 950,
+        "y": 40,
         "wires": [
             []
         ]
     },
     {
-        "id": "c65652bd5f874acf",
+        "id": "8ad1a2baf2d0cdaf",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "init esp services",
         "props": [
             {
@@ -4219,18 +4249,18 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 1180,
-        "y": 20,
+        "x": 740,
+        "y": 40,
         "wires": [
             [
-                "83d321d87bafb34a"
+                "b36a9495fcaaf6f5"
             ]
         ]
     },
     {
-        "id": "9b913f3fc42d4a48",
+        "id": "5e1cb8414fcdd691",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "init esp devices",
         "props": [
             {
@@ -4247,35 +4277,35 @@
         "onceDelay": "1",
         "topic": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 40,
+        "x": 140,
+        "y": 60,
         "wires": [
             [
-                "c85e844f30599311"
+                "7bfec33f9c1cca06"
             ]
         ]
     },
     {
-        "id": "c85e844f30599311",
+        "id": "7bfec33f9c1cca06",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Init Esp Devices",
-        "func": "//Init Esp Devices\nlet espDevices = global.get(\"espDevices\");\nif (espDevices) {\n\tnode.warn( [ \"[\" + node.name + \"][info] espDevices exists\", espDevices]);\n\treturn msg\n}\nglobal.set(\"espDevices\",{})\nreturn msg;\n",
+        "func": "//Init Esp Devices\nlet espDevices = global.get(\"espDevices\");\nif (espDevices) {\n\tnode.warn( [ \"[\" + node.name + \"][info] espDevices exists\", espDevices]);\n}\nglobal.set(\"espDevices\",{})\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 40,
+        "x": 360,
+        "y": 60,
         "wires": [
             []
         ]
     },
     {
-        "id": "49a5521673f2db45",
+        "id": "8421d5587664bc49",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "espDevicesTable Prep",
         "func": "//espDevicesTable  Table Prep\nlet gDebug = global.get(\"gDebug\");\n\nconst flowTableName = \"espDevicesTableDetails\";\nlet tableDetails = {\n    tableData:[],\n    tableDatabase: \"espDevices\",\n    tableDatabaseName: \"espDevices\",\n    tableJsonName: \"/devices/espDevices.json\",\n    tableType: \"object\",\n    tableKeys: [\"deviceName\"],\n    lastID: null,\n    tableTab: \"ESP Management\",\n    refreshableTable: true,\n\trefreshTime: 20,\n\t//recent check is less than the time speced   should be ascending order.   stale check is opposite.   stalecheck takes precedence (ie overwrites function)\n\trecentCheck: [{\"time\": 2*60, \"color\":'#baffc9'}, {\"time\": 5*60, \"color\":'#ffffba'}],\n\tstaleCheck: [{\"time\": 12*60*60, \"color\":'#E74C3C'}, {\"time\": 1*60*60, \"color\":'#F39C12'}],\n    tableName: flowTableName,\n\t\taddRowInject: {\"command\":\"addRow\",\"arguments\":[[{\"Service\":\"Service\",\"mqttPrefix\":\"mqttPrefix\",\"delayTime\":12}],true],\"returnPromise\":true}\n};\n\ntableDetails.rowFormatter = null;\n\nif (tableDetails.recentCheck) {\n\tlet temp = \"\";\n\ttableDetails.recentCheck.forEach( (chk) => {\n\t\ttemp = ( (temp==\"\") ? \"if\" : temp + \" else if\" ) + \" ((nDate-lDate)<\" + (chk.time * 1000) + \") {dCol='\" + chk.color + \"'}\"\t\t\n\t});\n\tif (temp != \"\") tableDetails.rowFormatter = \"function(row){var nDate=new Date();var lDate=new Date(row.getData().lastUpdated);var dCol=(row.getPosition(true)%2==0)?'$rowAltBackgroundColor':'$rowBackgroundColor';\" + temp + \";row.getElement().style.backgroundColor=dCol}\"\n}\n\nif (tableDetails.staleCheck) {\n\tlet temp = \"\";\n\ttableDetails.staleCheck.forEach( (chk) => {\n\t\ttemp = ( (temp==\"\") ? \"if\" : temp + \" else if\" ) + \" ((nDate-lDate)>\" + (chk.time * 1000) + \") {dCol='\" + chk.color + \"'}\"\t\t\n\t});\n\tif (temp != \"\") tableDetails.rowFormatter = \"function(row){var nDate=new Date();var lDate=new Date(row.getData().lastUpdated);var dCol=(row.getPosition(true)%2==0)?'$rowAltBackgroundColor':'$rowBackgroundColor';\" + temp + \";row.getElement().style.backgroundColor=dCol}\"\n}\n\nlet globalData = global.get(tableDetails.tableDatabaseName);\nlet esp = global.get(\"espDevices\");\nif (!globalData) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] \" + tableDetails.tableDatabaseName + \" does not exist\",tableDetails])\n    return null;\n}\nif ( (tableDetails.tableType == \"object\" ) && ( tableDetails.tableKeys.length !=1 ) ) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + \" for object type, a single key must be specified \",tableDetails]);\n\treturn null;\n}\n\ntableDetails.lastID = 0;\nif (tableDetails.tableType == \"array\") {\n    msg.payload = globalData.map( (ele) => {\n\t    return {id: tableDetails.lastID++,...ele}\n    });\n} else {\n   msg.payload = Object.keys(globalData).map( (ele) => {\n\treturn {\"id\": tableDetails.lastID++, [tableDetails.tableKeys[0]]: ele, ...globalData[ele]}\n    }); \n}\n\nflow.set(flowTableName,tableDetails);\nlet espServices = global.get(\"espServices\");\nnode.warn(Object.keys(espServices))\nmsg.ui_control =  {\n    \"tabulator\":{\n\t\t\"rowFormatter\": tableDetails.rowFormatter,\n        \"columns\":[{\"title\":\"id\",\"field\":\"id\",\"width\":35, },\n\t\t\t\t{title:\"<i class='fa fa-trash'></i>\", formatter:\"function(cell){return \\\"<i class='fa fa-trash'></i>\\\"}\", width:40, align : \"center\", cellClick: \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});cell.getRow().delete().then(()=>{this.send({ui_control:{callback:'rowDeleted'},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});console.log('Row Deleted');}).catch(()=>console.log('caught error'));}\"},\n\t\t\t\t{\"title\":\"Device Name\",\"field\":\"deviceName\",\"width\":115, \"editor\":\"input\"},\n\t\t\t\t{\"title\":\"Boots\",\"field\":\"reboots\",\"width\":70, \"align\":\"center\"},\n\t\t\t\t{\"title\":\"IP\",\"field\":\"IP\",\"width\":100, align:\"center\"},\n\t\t\t\t{\"title\":\"Version\",\"field\":\"appVersion\",\"width\":80, align:\"center\"},\n\t\t\t\t{\"title\":\"Library\",\"field\":\"libraryVersion\",\"width\":75, align:\"center\"},\n\t\t\t\t{\"title\":\"SSID\",\"field\":\"SSID\",\"width\":105, align:\"center\"},\n\t\t\t\t{\"title\":\"Last Update\",\"field\":\"lastUpdated\", align:\"center\",\"width\":120, formatter:\"datetime\",\n\t\t\t\t\t\t\t\tformatterParams:{outputFormat:\"DD/MM hh:mm:ss\"}},\n\t\t\t\t{\"title\":\"Location\",\"field\":\"location\",\"width\":110,\"editor\":\"input\",\n\t\t\t\t    ///formatter:\"function(cell,fps,onr){var cols={'BTRelay':'Blue','MovmentSensor':'Coral','TempSensor':'LightGrey','Other':'Orange'};console.log(cell.getValue());\treturn '<font color=\\\"' + cols[cell.getValue()] + '\\\">' + cell.getValue();}\",\n                    //editorParams: {values: Object.keys(espServices)},\n                    align:\"center\"},\n\t\t\t\t{\"title\":\"Delay\",\"field\":\"delayTime\",\"width\":75,\"editor\":\"number\", editorParams:{min:1000,step:1000}, align:\"center\"}\n        ],\n        \"cellEdited\": \"function(cell){var rowtmp = cell.getRow().getIndex();var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'cellEdited'},payload:cell.getValue(),oldValue:cell.getOldValue(),field:cell.getColumn().getField(),id:rowtmp,rowFields:rws});}\",\n        \"layout\":\"fitColumns\",\n        \"movableColumns\":false,\n        \"groupBy\":\"\"\n    },\n}\nmsg.topic = \"initTable\";\nmsg.tableInit = {ready:true, details: flowTableName};\n\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n    node.warn([\"[\" + node.name + \"] \", \"[Error] \", \"espDevices does not exist\"])\n    return null;\n}\nif (gDebug) node.warn([\"[\" + node.name + \"] [Info] Initialising \" + tableDetails.tableDatabaseName + \" - \" + globalData.length + \" entries \"])\nmsg.options = [];\nmsg.options = Object.keys(espDevices).map( (dev) => {return dev.devName})\nmsg.devices = espDevices\nreturn msg;",
         "outputs": 1,
@@ -4283,18 +4313,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 300,
+        "x": 500,
+        "y": 400,
         "wires": [
             [
-                "9bfa09943bb37e8b"
+                "a363c17dcf52100b"
             ]
         ]
     },
     {
-        "id": "7acc6dbfc0c5bfae",
+        "id": "61f7ee9336fea502",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Handle ESP updates",
         "func": "\nif ( (msg.hasOwnProperty(\"payload\")) && \n\t( msg.hasOwnProperty(\"ui_control\") ) &&\n\t( msg.ui_control.hasOwnProperty(\"callback\") ) &&\n\t(msg.ui_control.callback == \"cellEdited\")\n\t) {\n\t\tif (!msg.hasOwnProperty(\"field\")) {\n\t\t\tnode.error( [ \"[\" + node.name + \"][Error] \",\"field not found in msg\", msg ]);\n\t\t\treturn null\n\t\t}\n\t\tif (!msg.hasOwnProperty(\"rowFields\")) {\n\t\t\tnode.error( [ \"[\" + node.name + \"][Error] \",\"rowfield not found in msg\", msg]);\n\t\t\treturn null;\n\t\t}\n\t\tlet deviceName = msg.rowFields.find( (row) => {\n\t\t\tif (row.field==\"deviceName\") return row.val;\n\t\t}).val;\n\t\tif (!deviceName) {\n\t\t\tnode.error( [ \"[\" + node.name + \"][Error] \",\"deviceName not found in msg.rowFields\", msg,msg.rowFields]);\n\t\t\treturn null;\n\t\t}\n\t    let newMsg = {topic:deviceName + \"/update\", payload:{[msg.field]: msg.payload}};\n\t    node.warn( [ \"[\" + node.name + \"][Info] About to update \" + deviceName + \" field=\" + msg.field + \" oldvalue=\" + msg.oldValue + \" newvalue=\" + msg.payload, newMsg,msg]);\n\t\t\n\t\treturn newMsg;\n} else {\n\treturn null;\n}\nreturn null;\n",
         "outputs": 1,
@@ -4302,35 +4332,34 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1140,
-        "y": 220,
+        "x": 1380,
+        "y": 320,
         "wires": [
             [
-                "95e10dd810918c55"
+                "d52545127a07bba9"
             ]
         ]
     },
     {
-        "id": "ca39a320262e40bb",
+        "id": "d97ec81b051638af",
         "type": "json",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 250,
-        "y": 180,
+        "x": 270,
+        "y": 200,
         "wires": [
             [
-                "6b192f7fcdae0be2",
-                "f3ff67c9724df02e"
+                "b484687063ebafc2"
             ]
         ]
     },
     {
-        "id": "6b192f7fcdae0be2",
+        "id": "b484687063ebafc2",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "esp_mqt_handler",
         "func": "//esp_mqt_handler\nlet gDebug = global.get(\"gDebug\")\n//gDebug = true;\nlet nowDate = new Date();\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n    node.warn( [ \"[\" + node.name + \"][Info] Initialising espDevices\"]);\n\tespDevices = {};\n\tglobal.set(\"espDevices\",espDevices);\n}\nlet espServices = global.get(\"espServices\");\nif (!espServices) {\n    node.error( [ \"[\" + node.name + \"][Error] espServices definitions not set cannot continue\"]);\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error( [ \"[\" + node.name + \"][Error] MACs  not set cannot continue\"]);\n}\n\nlet topics = msg.topic.split(\"/\");\nlet deviceName = topics[1];\nlet macMessages = [];\nlet tableMsg = {topic: \"UpdateTable\", payload: {value:{}}};\nif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Msg received \" + deviceName, msg]);\nif (topics[0] == \"fromesp\") {\n\tif (!espDevices[deviceName]) {\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Device does not exist - Creating\" + deviceName, msg]);\n\t\tespDevices[deviceName] = {};\n\t\tespDevices[deviceName].deviceName = deviceName;\n\t\tespDevices[deviceName].devices = {};\n\t\tespDevices[deviceName].reboots = 0;\n\t\tespDevices[deviceName].rebootTime = new Date();\n\t\tespDevices[deviceName].createdTime = new Date();\n\t\tespDevices[deviceName].lastUpdated = new Date();\n\t\tespDevices[deviceName].location = \"Unknown\";\n\t\ttableMsg.payload.cmd = \"addRow\";\t\t\t\t\t\t  \n\t\tglobal.set(\"espDevices\",espDevices);\n\t} else {\n\t\ttableMsg.payload.cmd = \"updateRow\";\n\t}\n\tespDevices[deviceName].lastUpdated = new Date();\n\tif ( (topics[2] == \"hereiam\") || (topics[2] == \"iamhere\") ) {\n\t\tObject.keys(msg.payload).forEach( (k) => {\n\t\t\tif (k!=\"deviceName\") {\n\t\t\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Updating field  \" + k + \" from \" + espDevices[deviceName][k] + \" to \" + msg.payload[k], espDevices[deviceName], msg]);\n\t\t\t\tespDevices[deviceName][k] = msg.payload[k];\n\t\t\t}\n\t\t});\n\t\tif (espDevices[deviceName].reboots != espDevices[deviceName].reboots) espDevices[deviceName].reboots = 0;\n\t\tif (topics[2] == \"hereiam\") {\n\t\t    espDevices[deviceName].reboots++;\n\t\t    espDevices[deviceName].rebootTime = new Date();\n\t\t}\n\t\tObject.keys(espDevices[deviceName]).forEach( (k) => {tableMsg.payload.value[k] = espDevices[deviceName][k]});\n\t\tglobal.set(\"espDevices\",espDevices);\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"] \" + \" [Info] Sending welcome\"]);\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] hereiam so requesting more info \" + deviceName, msg]);\n\t\tlet newMsgs = []\n\t\tnewMsgs.push({topic: \"toesp/\" + deviceName + \"/welcome\",payload:{\"delayTime\":17000,\"service\":\"BTRelay\"}})\n\t\tnewMsgs.push({topic: \"toesp/\" + deviceName + \"/getConfig/device\",payload:{\"req\":\"getConfig\", type:\"device\"}})\n\t\tnewMsgs.push({topic: \"toesp/\" + deviceName + \"/getConfig/app\",payload:{\"req\":\"getConfig\", type:\"app\"}})\n\t\tnewMsgs.push({topic: \"toesp/\" + deviceName + \"/BTScan\",payload:{\"commands\":\"scan\", scanTime:msg.scanTime}})\n\t\treturn [tableMsg, newMsgs, macMessages];\n\t} else if (topics[2] == \"getConfig\"){\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Received Config from \" + deviceName, espDevices[deviceName], msg]);\n\t\tObject.keys(msg.payload).forEach( (k) => {\n\t\t\tif (k!=\"deviceName\") {\n\t\t\t\t//if (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Updating field  \" + k + \" from \" + espDevices[deviceName][k] + \" to \" + msg.payload[k], espDevices[deviceName], msg]);\n\t\t\t\tespDevices[deviceName][k] = msg.payload[k];\n\t\t\t}\n\t\t});\n\t\tObject.keys(espDevices[deviceName]).forEach( (k) => {tableMsg.payload.value[k] = espDevices[deviceName][k]});\n\t\tglobal.set(\"espDevices\",espDevices);\n\t\tif (espDevices[deviceName].mac) {\n\t\t\tmacMessages.push({topic: espDevices[deviceName].mac + \"_\" + deviceName,\n\t\t\t\t\t\tpayload:{deviceName:deviceName, type:\"ESP\",\n\t\t\t\t\t\tsource: \"espHandlerESP\",\n\t\t\t\t\t\tip: espDevices[deviceName].IP,\n\t\t\t\t\t\tMAC:espDevices[deviceName].mac}});\n\t\t\tif (gDebug) node.warn([\"Creating Mac Message\",macMessages])\n\t\t\treturn [tableMsg, null, macMessages];\n\t\t}\n\t} else if (topics[2] == \"BTScan\"){\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Received BTScan from \" + deviceName, espDevices[deviceName], msg]);\n\t\tmsg.payload.devices.forEach( (dev) => {\n\t\t\tif (!espDevices[deviceName].devices[dev.address]) espDevices[deviceName].devices[dev.address] = {};\n\t\t\tif (!MACs[dev.address]){\n\t\t\t\tif (gDebug) node.warn([\"Creating Mac Message\",macMessages])\n\t\t\t\tmacMessages.push({topic: dev.address + \"_\" + dev.name,\n\t\t\t\t\t\tsource: \"espHandlerBLE\",\n\t\t\t\t\t\tpayload:{deviceName:dev.name, type:\"BLE\", ip: \"\", MAC: dev.address}});\n\t\t\t\t\t\t//ip: espDevices[deviceName].IP,\n\t\t\t}\n\t\t\tObject.keys(dev).forEach( (k) => {espDevices[deviceName].devices[dev.address][k] = dev[k];});\n\t\t});\n\t\tObject.keys(espDevices[deviceName]).forEach( (k) => {tableMsg.payload.value[k] = espDevices[deviceName][k]});\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][Info] Added Devices to \" + deviceName,espDevices[deviceName].devices]);\n\t\tglobal.set(\"espDevices\", espDevices);\n\t\treturn [tableMsg, null, macMessages];\n\t} else {\n\t\tif (gDebug) node.warn( [ \"[\" + node.name + \"][fromesp] \" + \" [Info] Unrecognised topic \" + msg.topic + \" nothing more to do\",msg,topics]);\n\t}\n} else if (topics[0] == \"fromserver\") {\n    let newMsg = {};\n\tif (topics[2] == \"hereiam\") {\n\t\tnewMsg = {topic: \"toserver/\" + deviceName + \"/welcome\",payload:{\"service\":\"Server\"}}\n\t} else if (topics[2] == \"getDevices\") {\n\t\tnewMsg.payload = []\n\t\tObject.keys(espDevices).forEach( (dev) => {\n\t\t\tif (dev!= \"smartserver\") {\n\t\t\t\tObject.keys(dev.devices).forEach( (devu) => {\n\t\t\t\t\tnewMsg.payload.push({deviceName:dev, devices: dev.devices[devu]});\n\t\t\t\t});\n\t\t\t}\n\t\t});\n\t\tnewMsg.topic = \"toserver\" + \"/\" + topics[1] + \"/getDevices\";\n\t\treturn [null, newMsg, macMessages];\n\t} else {\n\t\tnode.warn( [ \"[\" + node.name + \"][fromserver] \" + \" [Info] Unrecognised topic \" + msg.topic + \" nothing more to do\",msg,topics]);\n\t}\n} else {\n\tnode.warn( [ \"[\" + node.name + \"] \" + \" [Info] unknown source (not fromesp or fromserver) \",msg,topics]);\n}\nreturn null",
         "outputs": 3,
@@ -4338,79 +4367,60 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 180,
+        "x": 450,
+        "y": 200,
         "wires": [
             [
-                "9bfa09943bb37e8b"
+                "a363c17dcf52100b"
             ],
             [
-                "95e10dd810918c55"
+                "d52545127a07bba9"
             ],
             [
-                "07ce32156e3809c9",
-                "fe2d23873c0e3a3a"
+                "5ef11a850de64405"
             ]
         ]
     },
     {
-        "id": "9bfa09943bb37e8b",
+        "id": "a363c17dcf52100b",
         "type": "subflow:e6dcd8331e41ae02",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "env": [],
-        "x": 900,
-        "y": 300,
+        "x": 920,
+        "y": 400,
         "wires": [
             [
-                "058ff1e339beb650",
-                "fe940ab3e1b2af99"
+                "a6c19d4ef8ba397f",
+                "7f8cdb33c11b8a5a"
             ]
         ]
     },
     {
-        "id": "058ff1e339beb650",
+        "id": "a6c19d4ef8ba397f",
         "type": "ui_table",
-        "z": "2b0356c1d2b6f949",
-        "group": "44500ad3f2169d89",
+        "z": "910cb7f1e9a01c80",
+        "group": "2c0327def1d1c166",
         "name": "ESP Table",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 890,
-        "y": 220,
+        "x": 910,
+        "y": 320,
         "wires": [
             [
-                "9bfa09943bb37e8b",
-                "7acc6dbfc0c5bfae"
+                "a363c17dcf52100b",
+                "61f7ee9336fea502"
             ]
         ]
     },
     {
-        "id": "fb4eaaff72f53002",
-        "type": "mqtt out",
-        "z": "2b0356c1d2b6f949",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "827c9488.27bf78",
-        "x": 1570,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "be13733639fe373a",
+        "id": "c31eec8e9c5dcb4e",
         "type": "mqtt in",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "fromesp",
         "topic": "fromesp/#",
         "qos": "2",
@@ -4420,18 +4430,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 80,
-        "y": 220,
+        "x": 100,
+        "y": 240,
         "wires": [
             [
-                "ca39a320262e40bb"
+                "d97ec81b051638af"
             ]
         ]
     },
     {
-        "id": "8597a53ec99ef253",
+        "id": "10529f4f68be899d",
         "type": "mqtt in",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "fromserver",
         "topic": "fromserver/#",
         "qos": "2",
@@ -4441,319 +4451,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 80,
-        "y": 160,
+        "x": 100,
+        "y": 180,
         "wires": [
             [
-                "ca39a320262e40bb"
+                "d97ec81b051638af"
             ]
         ]
     },
     {
-        "id": "c8918149336005f2",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "candela F8:24:41:C0:51:71",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "mac",
-                "v": "F8:24:41:C0:51:71",
-                "vt": "str"
-            },
-            {
-                "p": "suuid",
-                "v": "0000fe87-0000-1000-8000-00805f9b34fb",
-                "vt": "str"
-            },
-            {
-                "p": "cuuid",
-                "v": "aa7d3f34-2d4f-41e0-807f-52fbf8cf7443",
-                "vt": "str"
-            },
-            {
-                "p": "nuuid",
-                "v": "8f65073d-9f57-4aaa-afea-397d19d5bbeb",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 690,
-        "y": 780,
-        "wires": [
-            [
-                "e3e7aac9b8d30e18"
-            ]
-        ]
-    },
-    {
-        "id": "8d6721b11350ec93",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "Rosie's Bed F8:24:41:E8:FF:44",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "mac",
-                "v": "F8:24:41:E8:FF:44",
-                "vt": "str"
-            },
-            {
-                "p": "suuid",
-                "v": "8e2f0cbd-1a66-4b53-ace6-b494e25f87bd",
-                "vt": "str"
-            },
-            {
-                "p": "cuuid",
-                "v": "aa7d3f34-2d4f-41e0-807f-52fbf8cf7443",
-                "vt": "str"
-            },
-            {
-                "p": "nuuid",
-                "v": "8f65073d-9f57-4aaa-afea-397d19d5bbeb",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 710,
-        "y": 860,
-        "wires": [
-            [
-                "e3e7aac9b8d30e18"
-            ]
-        ]
-    },
-    {
-        "id": "9f7d08a5d20d43bc",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "scan",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            },
-            {
-                "p": "scanTime",
-                "v": "10",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "scan",
-        "payloadType": "date",
-        "x": 630,
-        "y": 940,
-        "wires": [
-            [
-                "e3e7aac9b8d30e18"
-            ]
-        ]
-    },
-    {
-        "id": "18e9a58c5f37f3e8",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "candela F8:24:41:C0:50:C9",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "mac",
-                "v": "F8:24:41:C0:50:C9",
-                "vt": "str"
-            },
-            {
-                "p": "suuid",
-                "v": "0000fe87-0000-1000-8000-00805f9b34fb",
-                "vt": "str"
-            },
-            {
-                "p": "cuuid",
-                "v": "aa7d3f34-2d4f-41e0-807f-52fbf8cf7443",
-                "vt": "str"
-            },
-            {
-                "p": "nuuid",
-                "v": "8f65073d-9f57-4aaa-afea-397d19d5bbeb",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 700,
-        "y": 820,
-        "wires": [
-            [
-                "e3e7aac9b8d30e18"
-            ]
-        ]
-    },
-    {
-        "id": "efc6d911d75ed61e",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "David's Bed F8:24:41:E9:0D:18",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "mac",
-                "v": "F8:24:41:E9:0D:18",
-                "vt": "str"
-            },
-            {
-                "p": "suuid",
-                "v": "8e2f0cbd-1a66-4b53-ace6-b494e25f87bd",
-                "vt": "str"
-            },
-            {
-                "p": "cuuid",
-                "v": "aa7d3f34-2d4f-41e0-807f-52fbf8cf7443",
-                "vt": "str"
-            },
-            {
-                "p": "nuuid",
-                "v": "8f65073d-9f57-4aaa-afea-397d19d5bbeb",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 710,
-        "y": 900,
-        "wires": [
-            [
-                "e3e7aac9b8d30e18"
-            ]
-        ]
-    },
-    {
-        "id": "e3e7aac9b8d30e18",
+        "id": "b04611cbd9185e03",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
-        "name": "Send commands",
-        "func": "//esp_mqt_handler\nlet gDebug = global.get(\"gDebug\")\n//gDebug = true;\nlet deviceName = \"esp32_5A9C\"\nif (msg.topic==\"scan\") {\n\treturn {topic:deviceName + \"/toesp/BTScan\",payload:{\"commands\":\"scan\", scanTime:msg.scanTime}}\n}\n//devStatus.devices[deviceName].updated = true;\nlet cmds = []\nif (flow.get(\"power\") == \"on\") {\n    cmds = [0x43,0x40,0x01] \n    node.warn( [ \"[\" + node.name + \"][Info] Sending on \" + deviceName, cmds]);\n} else if (flow.get(\"power\") == \"off\") {\n    cmds = [0x43,0x40,0x02] \n    node.warn( [ \"[\" + node.name + \"][Info] Sending off \" + deviceName, cmds]);\n} else {\n    node.warn( [ \"[\" + node.name + \"][Info] cmds not set\" + deviceName, cmds]);\n    return null;\n}\n\nreturn {topic:deviceName + \"/toesp/execute\", payload:{\n\t\t\t\tcommands: cmds, mac: msg.mac, cmd: flow.get(\"power\"),\n\t\t\t\tsuuid: msg.suuid, cuuid: msg.cuuid, nuuid: msg.nuuid}}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1290,
-        "y": 840,
-        "wires": [
-            [
-                "fb4eaaff72f53002"
-            ]
-        ]
-    },
-    {
-        "id": "fd502a6ad8991644",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "off",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "off",
-        "payloadType": "date",
-        "x": 630,
-        "y": 1000,
-        "wires": [
-            [
-                "22e33302cd597a0c"
-            ]
-        ]
-    },
-    {
-        "id": "a9787fd5dcb3cbac",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "on",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "on",
-        "payloadType": "date",
-        "x": 630,
-        "y": 1040,
-        "wires": [
-            [
-                "22e33302cd597a0c"
-            ]
-        ]
-    },
-    {
-        "id": "22e33302cd597a0c",
-        "type": "function",
-        "z": "2b0356c1d2b6f949",
-        "name": "Set Power",
-        "func": "flow.set(\"power\",msg.topic)\nif (msg.topic==\"on\") {\n    node.status({fill:\"green\",shape:\"ring\",text:\"on\"});\n} else if (msg.topic==\"off\") {\n    node.status({fill:\"yellow\",shape:\"ring\",text:\"off\"});\n} else {\n    node.status({fill:\"red\",shape:\"square\",text:\"unknown\"});\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 770,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "839cbbf78776602b",
-        "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "MAC Table Prep",
         "func": "// MACs Prep\nlet gDebug = global.get(\"gDebug\");\n\nconst flowTableName = \"MACAddressesTable\";\nlet tableDetails = {\n    tableData:[],\n    tableDatabase: \"MACs\",\n    tableDatabaseName: \"MACs\",\n    tableJsonName: \"/devices/MACs.json\",\n    tableType: \"object\",\n    tableKeys: [\"MAC\"],\n    lastID: null,\n    tableTab: \"MACs\",\n    tableName: flowTableName,\n\taddRowInject: {\"command\":\"addRow\",\"arguments\":[[{\"MAC\":\"<mac address>\",\"type\":\"<type>\", \"deviceName\":\"<device name>\", \"IP\":\"<ip>\"}],true],\"returnPromise\":true}\n};\nlet globalData = global.get(tableDetails.tableDatabaseName);\nif (!globalData) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] \" + tableDetails.tableDatabaseName + \" does not exist\",tableDetails])\n    return null;\n}\nif ( (tableDetails.tableType == \"object\" ) && ( tableDetails.tableKeys.length !=1 ) ) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + \" for object type, a single key must be specified \",tableDetails]);\n\treturn null;\n}\n\ntableDetails.lastID = 0;\nif (tableDetails.tableType == \"array\") {\n    msg.payload = globalData.map( (ele) => {\n\t    return {id: tableDetails.lastID++,...ele}\n    });\n} else {\n   msg.payload = Object.keys(globalData).map( (ele) => {\n\t//return {\"id\": tableDetails.lastID++, [tableDetails.tableKeys[0]]: ele, ...globalData[ele]}\n\treturn {\"id\": tableDetails.lastID++, ...globalData[ele]}\n    }); \n}\nflow.set(flowTableName,tableDetails);\nmsg.ui_control =  {\n    \"tabulator\":{\n        \"columns\":[{\"title\":\"id\",\"field\":\"id\",\"width\":30, },\n\t\t\t//{title:\" \", formatter:\"function(cell){return \\\"<i class='fa fa-trash'></i>\\\"}\", width:40, align: \"center\", cellClick: \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});cell.getRow().delete().then(()=>{this.send({ui_control:{callback:'rowDeleted'},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});console.log('Row Deleted');}).catch(()=>console.log('caught error'));}\"},\n            {\"title\":\"MAC\",\"field\":\"MAC\",\"width\":130, \"editor\":\"input\", validator: \"required\"},\n            {\"title\":\"Type\",\"field\":\"type\",\"width\":70, align:\"center\", \"editor\":\"select\", editorParams:{values:[\"IP\",\"BLE\",\"ESP\"]}, validator: \"required\"},\n\t\t\t{\"title\":\"Device Name\",\"field\":\"deviceName\",\"width\":200, \"editor\":\"input\"},\n\t\t\t{\"title\":\"Hostname\",\"field\":\"hostname\",\"width\":200},\n\t\t\t{\"title\":\"IP\",\"field\":\"ip\",\"width\":120}\n        ],\n        \"cellEdited\": \"function(cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'cellEdited'},payload:cell.getValue(),oldValue:cell.getOldValue(),field:cell.getColumn().getField(),id:cell.getRow().getIndex(),row:rws});}\",\n        \"layout\":\"fitColumns\",\n        \"movableColumns\":false,\n        \"groupBy\":\"\"\n    },\n    \"customHeight\":30\n}\n\nmsg.topic = \"initTable\";\nmsg.tableInit = {ready:true, details: flowTableName};\nif (gDebug) node.warn([\"[\" + node.name + \"] [Info] Initialising \" + tableDetails.tableDatabaseName + \" - \" + globalData.length + \" entries \"])\nreturn [msg,{topic:\"control\", payload:\"open\"}];",
         "outputs": 2,
@@ -4761,36 +4470,36 @@
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nif (!global.get(\"MACs\")) {\n\tglobal.set(\"MACs\", {})\n}\n",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 500,
+        "x": 460,
+        "y": 680,
         "wires": [
             [
-                "390a4cef81e9e0cd"
+                "868d9e629fca81ce"
             ],
             [
-                "33018bcdb15ad4ac"
+                "37d1a007aed6f786"
             ]
         ]
     },
     {
-        "id": "390a4cef81e9e0cd",
+        "id": "868d9e629fca81ce",
         "type": "subflow:e6dcd8331e41ae02",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "env": [],
-        "x": 900,
-        "y": 440,
+        "x": 920,
+        "y": 540,
         "wires": [
             [
-                "6e79cec38a9cb7f6"
+                "1fbe0655b12860a5"
             ]
         ]
     },
     {
-        "id": "6e79cec38a9cb7f6",
+        "id": "1fbe0655b12860a5",
         "type": "ui_table",
-        "z": "2b0356c1d2b6f949",
-        "group": "fc351a18e5b912e7",
+        "z": "910cb7f1e9a01c80",
+        "group": "bbcc15c7065be440",
         "name": "MACs Admin",
         "order": 2,
         "width": "10",
@@ -4798,68 +4507,67 @@
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 890,
-        "y": 360,
+        "x": 910,
+        "y": 460,
         "wires": [
             [
-                "390a4cef81e9e0cd"
+                "868d9e629fca81ce"
             ]
         ]
     },
     {
-        "id": "d91ede56b1adfc96",
+        "id": "55e8971ecb753c91",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Add Mac",
-        "func": "//Add Mac\nlet gDebug = global.get(\"gDebug\");\ngDebug = true;\nif (!msg.payload.hasOwnProperty(\"MAC\")) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] msg payload does not contain an object MAC\", msg]);\n    return {topic:\"Error\", payload: \"[Error] msg payload does not contain an object MAC\"};\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] MACs do not exist\", msg]);\n    return {topic:\"Error\", payload: \"[Error] MACs do not exist\"};\n}\nlet action = null;\nlet tableMsg = {topic: \"UpdateTable\", source: msg.source, payload: {value:{}}};\nif (!MACs[msg.payload.MAC]) {\n    node.warn([\"[\" + node.name + \"] \", \"[Info] Creating MAC \" + msg.payload.MAC, msg]);\n    MACs[msg.payload.MAC] = {};\n\ttableMsg.payload.cmd = \"addRow\";\t\n    action = \"INSERT\";\n} else {\n    action = \"AMEND\";\n\ttableMsg.payload.cmd = \"updateRow\";\n}\n//node.warn(\"DEBUG \" + msg.payload.MAC + \" \" + msg.payload.type + \" \" + tableMsg.payload.cmd)\nObject.keys(msg.payload).forEach( (prp) =>{\n\tif ( (msg.payload[prp]) && ( (!MACs[msg.payload.MAC][prp]) || (prp != \"type\") || (msg.payload[prp] != \"IP\") ) ) MACs[msg.payload.MAC][prp] = msg.payload[prp];\n})\nif (gDebug) node.warn([\"[\" + node.name + \"] \", \"[Info] MAC \" + action + \"ed \" + JSON.stringify(MACs[msg.payload.MAC]), MACs, msg]);\nObject.keys(MACs[msg.payload.MAC]).forEach( (k) => {tableMsg.payload.value[k] = MACs[msg.payload.MAC][k]});\nglobal.set(\"MACs\", MACs)\n//return {topic: action + \"_\" + msg.payload.MAC, payload:MACs};\nreturn [tableMsg];",
+        "func": "//Add Mac\nlet gDebug = global.get(\"gDebug\");\n//gDebug = true;\nif (!msg.payload.hasOwnProperty(\"MAC\")) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] msg payload does not contain an object MAC\", msg]);\n    return {topic:\"Error\", payload: \"[Error] msg payload does not contain an object MAC\"};\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] MACs do not exist\", msg]);\n    return {topic:\"Error\", payload: \"[Error] MACs do not exist\"};\n}\nlet action = null;\nlet tableMsg = {topic: \"UpdateTable\", source: msg.source, payload: {value:{}}};\nif (!MACs[msg.payload.MAC]) {\n    node.warn([\"[\" + node.name + \"] \", \"[Info] Creating MAC \" + msg.payload.MAC, msg]);\n    MACs[msg.payload.MAC] = {};\n\ttableMsg.payload.cmd = \"addRow\";\t\n    action = \"INSERT\";\n} else {\n    action = \"AMEND\";\n\ttableMsg.payload.cmd = \"updateRow\";\n}\n//node.warn(\"DEBUG \" + msg.payload.MAC + \" \" + msg.payload.type + \" \" + tableMsg.payload.cmd)\nObject.keys(msg.payload).forEach( (prp) =>{\n\tif ( (msg.payload[prp]) && ( (!MACs[msg.payload.MAC][prp]) || (prp != \"type\") || (msg.payload[prp] != \"IP\") ) ) MACs[msg.payload.MAC][prp] = msg.payload[prp];\n})\nif (gDebug) node.warn([\"[\" + node.name + \"] \", \"[Info] MAC \" + action + \"ed \" + JSON.stringify(MACs[msg.payload.MAC]), MACs, msg]);\nObject.keys(MACs[msg.payload.MAC]).forEach( (k) => {tableMsg.payload.value[k] = MACs[msg.payload.MAC][k]});\nglobal.set(\"MACs\", MACs)\n//return {topic: action + \"_\" + msg.payload.MAC, payload:MACs};\nreturn [tableMsg];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 420,
+        "x": 700,
+        "y": 540,
         "wires": [
             [
-                "390a4cef81e9e0cd"
+                "868d9e629fca81ce"
             ]
         ]
     },
     {
-        "id": "47b7513c6cfe84ff",
+        "id": "b737c33811d31df3",
         "type": "link in",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Add MAC",
         "links": [
-            "07ce32156e3809c9",
+            "5ef11a850de64405",
             "f34bfffc2b5fc5e6"
         ],
-        "x": 315,
-        "y": 360,
+        "x": 275,
+        "y": 400,
         "wires": [
             [
-                "e9fe4c3b15776ece",
-                "33018bcdb15ad4ac"
+                "37d1a007aed6f786"
             ]
         ]
     },
     {
-        "id": "07ce32156e3809c9",
+        "id": "5ef11a850de64405",
         "type": "link out",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "mode": "link",
         "links": [
-            "47b7513c6cfe84ff"
+            "b737c33811d31df3"
         ],
-        "x": 595,
-        "y": 220,
+        "x": 575,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "75a7a1e061d4f740",
+        "id": "9f4d8880551f05e0",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "anyonethere",
         "props": [
             {
@@ -4876,103 +4584,18 @@
         "onceDelay": "10",
         "topic": "toesp/allesp/anyonethere",
         "payloadType": "date",
-        "x": 1040,
-        "y": 1000,
+        "x": 1480,
+        "y": 60,
         "wires": [
             [
-                "fb4eaaff72f53002"
+                "d52545127a07bba9"
             ]
         ]
     },
     {
-        "id": "f1195fa8a0990230",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "esp32_697C/stopscan",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "toesp/esp32_697C//stopScan",
-        "payloadType": "date",
-        "x": 1060,
-        "y": 1100,
-        "wires": [
-            [
-                "fb4eaaff72f53002"
-            ]
-        ]
-    },
-    {
-        "id": "a7f972a88241b71c",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "esp32_697C/startScan",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "toesp/esp32_697C//startScan",
-        "payloadType": "date",
-        "x": 1060,
-        "y": 1060,
-        "wires": [
-            [
-                "fb4eaaff72f53002"
-            ]
-        ]
-    },
-    {
-        "id": "a3f61ab88df88184",
-        "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "esp32_6D2C/updateWifi",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "toesp/esp32_6D2C//setConfig",
-        "payload": "{\"SSID\":\"CREAGERS\"}",
-        "payloadType": "json",
-        "x": 1050,
-        "y": 1140,
-        "wires": [
-            [
-                "fb4eaaff72f53002"
-            ]
-        ]
-    },
-    {
-        "id": "e20ed0c471b893d4",
+        "id": "6487423d2d330d69",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Clear reboot Counter",
         "func": "//Init Esp Devices\nlet espDevices = global.get(\"espDevices\");\nif (espDevices) {\n\tnode.warn( [ \"[\" + node.name + \"][info] espDevices exists\", espDevices]);\n}\nlet msgs = [];\nlet newReboots = 0;\nif (msg.reboots) newReboots = msg.reboots;\nObject.values(espDevices).forEach((dev) => {\n    if (dev) {\n    node.warn(dev.mac + \" settting reboots to \" + newReboots + \" from \" + dev.reboots);\n    dev.reboots = newReboots;\n    msgs.push({topic:\"UpdateTable\",payload: {cmd:\"updateRow\", value:dev}})\n    }\n})\n//\nglobal.set(\"espDevices\",espDevices)\n\nreturn [msgs];\n",
         "outputs": 1,
@@ -4980,18 +4603,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 100,
+        "x": 380,
+        "y": 120,
         "wires": [
             [
-                "9bfa09943bb37e8b"
+                "a363c17dcf52100b"
             ]
         ]
     },
     {
-        "id": "800a236318515e08",
+        "id": "8e37c248b0fd9710",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Clear reboots",
         "props": [
             {
@@ -5009,19 +4632,19 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 100,
+        "x": 130,
+        "y": 120,
         "wires": [
             [
-                "e20ed0c471b893d4"
+                "6487423d2d330d69"
             ]
         ]
     },
     {
-        "id": "fe940ab3e1b2af99",
+        "id": "7f8cdb33c11b8a5a",
         "type": "ui_text",
-        "z": "2b0356c1d2b6f949",
-        "group": "44500ad3f2169d89",
+        "z": "910cb7f1e9a01c80",
+        "group": "2c0327def1d1c166",
         "order": 1,
         "width": "0",
         "height": "0",
@@ -5029,14 +4652,14 @@
         "label": "Refreshed",
         "format": "{{msg.refreshDate}}",
         "layout": "row-center",
-        "x": 1150,
-        "y": 300,
+        "x": 1130,
+        "y": 400,
         "wires": []
     },
     {
-        "id": "24faf49809760797",
+        "id": "c84e1288fdab6117",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "scan please",
         "props": [
             {
@@ -5054,18 +4677,18 @@
         "topic": "toesp/allesp/BTScan",
         "payload": "{\"commands\":\"scan\",\"scanTime\":10}",
         "payloadType": "json",
-        "x": 1030,
-        "y": 960,
+        "x": 1490,
+        "y": 100,
         "wires": [
             [
-                "fb4eaaff72f53002"
+                "d52545127a07bba9"
             ]
         ]
     },
     {
-        "id": "70b3e692fbea0fbf",
+        "id": "4ca3632d7e0890a4",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "esp bluetooth devs",
         "func": "// esp bluetooth devs\nlet gDebug = global.get(\"gDebug\")\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n    node.warn( [ \"[\" + node.name + \"][Info] Initialising espDevices\"]);\n\treturn;\n}\nlet espServices = global.get(\"espServices\");\nif (!espServices) {\n    node.error( [ \"[\" + node.name + \"][Error] espServices definitions not set cannot continue\"]);\n\treturn\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error( [ \"[\" + node.name + \"][Error] MACs  not set cannot continue\"]);\n\treturn\n}\nlet btdevices = [];\nfunction deriveSubType(name) {\n    if (name) {\n    \tif (name.includes(\"XMCT\")) {\n    \t\treturn \"bedside\";\n    \t} else if (name.includes(\"yeelight\")) {\n    \t\treturn \"candela\";\n    \t} else if (name.includes(\"ATC\")) {\n    \t\treturn \"atc\";\n    \t} else if (name.includes(\"ihoment\")) {\n    \t\treturn \"govee\";\n    \t} else {\n    \t\treturn \"unknown\";\n    \t}\n    }\n    return \"blank name\"\n}\nObject.values(espDevices).forEach( (esp) => {\n\tObject.values(esp.devices).forEach( (btdev) => {\n\t\tif (!btdevices.find((btd) => btdev.address== btd.mac)) {\n\t\t\t//node.warn(\"DEBUG - mac=\" + btdev.address + \" name=\" + btdev.name);\n\t\t\tconst macDev = Object.values(MACs).find( mac => mac.MAC == btdev.address);\n\t\t\tif (!macDev) {\n\t\t\t\t//node.warn ([\"MAC does not exist \" + btdev.address + \" name=\" + btdev.name + \" subtype=\" + deriveSubType(btdev.name) , MACs]);\n\t\t\t\tconst subType = deriveSubType(btdev.name);\n\t\t\t\tbtdevices.push({mac:btdev.address, name:\"MAC not in MACs\", subtype: deriveSubType(btdev.name)});\n\t\t\t} else {\n\t\t\t\t//node.warn ([\"MAC exists \" + btdev.address + \" name=\" + btdev.name + \" subtype=\" + deriveSubType(btdev.name) , MACs]);\n\t\t\t\tbtdevices.push({mac:btdev.address, name:macDev.deviceName, subtype: deriveSubType(btdev.name)});\n\t\t\t}\n\t\t}\n\t});\n});\nnode.warn(btdevices);\nflow.set(\"btdevices\",btdevices);\nconst flowTableName = \"btdevicetabledetails\";\nlet tableDetails = {\n    tableData:[],\n    tableDatabase: \"btdevices\",\n    tableDatabaseName: \"btdevices\",\n    tableJsonName: \"/devices/btdevices.json\",\n    tableType: \"object\",\n    tableKeys: [\"mac\"],\n    lastID: null,\n    tableTab: \"ESP Management\",\n    refreshableTable: false,\n\trefreshTime: 20,\n\t//recent check is less than the time speced   should be ascending order.   stale check is opposite.   stalecheck takes precedence (ie overwrites function)\n\t//recentCheck: [{\"time\": 2*60, \"color\":'#baffc9'}, {\"time\": 5*60, \"color\":'#ffffba'}],\n\t//staleCheck: [{\"time\": 12*60*60, \"color\":'#E74C3C'}, {\"time\": 1*60*60, \"color\":'#F39C12'}],\n    tableName: flowTableName,\n\taddRowInject: {\"command\":\"addRow\",\"arguments\":[[{\"Service\":\"Service\",\"mqttPrefix\":\"mqttPrefix\",\"delayTime\":12}],true],\"returnPromise\":true}\n};\ntableDetails.rowFormatter = null;\ntableDetails.cellClicker = \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'buttonClicked','button':cell.getColumn().getDefinition().title},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-thermometer-empty'></i>\\\"}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-lightbulb-o'></i>\\\"}\"\n//tableDetails.icon2Formatter = \"function(cell){return \\\"<i class='fa fa-power-off'></i>\\\"}\"\ntableDetails.icon2Formatter = \"function(cell){return \\\"<i class='material-icons md-48'>check_circle_outline</i>\\\"}\"\n//<font color=\"black\"><i class=\"material-icons md-48\">check_circle_outline</i></font> \ntableDetails.icon2Formatter =  \"function(cell){var type=cell.getData().subtype;console.log('type='+type);if ((type!='atc')&&(type!='unknown')) return \\\"<i class='fa fa-power-off'></i>\\\";return \\\"<i class='fa fa-ban'></i>\\\";}\"\n\nlet globalData = flow.get(tableDetails.tableDatabaseName);\nif (!globalData) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] \" + tableDetails.tableDatabaseName + \" does not exist\",tableDetails])\n    return null;\n}\nif ( (tableDetails.tableType == \"object\" ) && ( tableDetails.tableKeys.length !=1 ) ) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + \" for object type, a single key must be specified \",tableDetails]);\n\treturn null;\n}\n\ntableDetails.lastID = 0;\nif (tableDetails.tableType == \"array\") {\n    msg.payload = globalData.map( (ele) => {\n\t    return {id: tableDetails.lastID++,...ele}\n    });\n} else {\n   msg.payload = Object.keys(globalData).map( (ele) => {\n\treturn {\"id\": tableDetails.lastID++, [tableDetails.tableKeys[0]]: ele, ...globalData[ele]}\n    }); \n}\n\nflow.set(flowTableName,tableDetails);\nmsg.ui_control =  {\n    \"tabulator\":{\n        \"columns\":[{\"title\":\"id\",\"field\":\"id\",\"width\":30, },\n\t\t\t\t//{title:\"<i class='fa fa-trash'></i>\", formatter:\"function(cell){return \\\"<i class='fa fa-trash'></i>\\\"}\", width:40, align : \"center\", cellClick: \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});cell.getRow().delete().then(()=>{this.send({ui_control:{callback:'rowDeleted'},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});console.log('Row Deleted');}).catch(()=>console.log('caught error'));}\"},\n\t\t\t\t{\"title\":\"Name\",\"field\":\"name\",\"width\":120 },\n\t\t\t\t{\"title\":\"MAC\",\"field\":\"mac\",\"width\":125 },\n\t\t\t\t{\"title\":\"Sub-type\",\"field\":\"subtype\",\"width\":100, align:\"center\"},\n\t\t\t\t{\"title\":\"PwrOn\", formatter: tableDetails.icon2Formatter, width:75, \"align\": \"center\", cellClick: tableDetails.cellClicker},\n                {\"title\":\"PwrOff\", formatter: tableDetails.icon2Formatter, width:75, \"align\": \"center\", cellClick: tableDetails.cellClicker}\n        ],\n        \"cellEdited\": \"function(cell){var rowtmp = cell.getRow().getIndex();var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'cellEdited'},payload:cell.getValue(),oldValue:cell.getOldValue(),field:cell.getColumn().getField(),id:rowtmp,rowFields:rws});}\",\n        \"layout\":\"fitColumns\",\n        \"movableColumns\":false,\n        \"groupBy\":\"\"\n    },\n}\nmsg.topic = \"initTable\";\nmsg.tableInit = {ready:true, details: flowTableName};\nif (gDebug) node.warn([\"[\" + node.name + \"] [Info] Initialising \" + tableDetails.tableDatabaseName + \" - \" + globalData.length + \" entries \"])\nreturn msg;",
         "outputs": 1,
@@ -5073,19 +4696,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
-        "y": 560,
+        "x": 470,
+        "y": 740,
         "wires": [
             [
-                "ca01cd828ec0df9c"
+                "4b0fea29286a8bba"
             ]
         ]
     },
     {
-        "id": "a4235a329f37674c",
+        "id": "857926430c85bcfc",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "start immed",
+        "z": "910cb7f1e9a01c80",
+        "name": "Start immediate",
         "props": [
             {
                 "p": "payload"
@@ -5098,38 +4721,38 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "0.1",
+        "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 110,
+        "x": 120,
         "y": 540,
         "wires": [
             [
-                "70b3e692fbea0fbf",
-                "c024b5ede3db918b",
-                "49a5521673f2db45",
-                "839cbbf78776602b"
+                "4ca3632d7e0890a4",
+                "5e27b9fb02579ba9",
+                "8421d5587664bc49"
             ]
         ]
     },
     {
-        "id": "ca01cd828ec0df9c",
+        "id": "4b0fea29286a8bba",
         "type": "subflow:e6dcd8331e41ae02",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
-        "x": 880,
-        "y": 560,
+        "x": 900,
+        "y": 740,
         "wires": [
             [
-                "3a456cd41ace9ddb"
+                "8765fbd25705c53b",
+                "fe4855e30e637cfa"
             ]
         ]
     },
     {
-        "id": "3a456cd41ace9ddb",
+        "id": "8765fbd25705c53b",
         "type": "ui_table",
-        "z": "2b0356c1d2b6f949",
-        "group": "d9110728974771ec",
+        "z": "910cb7f1e9a01c80",
+        "group": "ae7db8c4abafff28",
         "name": "BLE Device Admin",
         "order": 1,
         "width": "7",
@@ -5137,67 +4760,69 @@
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 900,
-        "y": 500,
+        "x": 920,
+        "y": 680,
         "wires": [
             [
-                "ca01cd828ec0df9c"
+                "4b0fea29286a8bba"
             ]
         ]
     },
     {
-        "id": "3bc999b58af21317",
+        "id": "1d96b34fac763874",
         "type": "ui_ui_control",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "events": "all",
         "x": 100,
         "y": 480,
         "wires": [
             [
-                "ca01cd828ec0df9c",
-                "c3b2bd6eeeb206ab",
-                "9bfa09943bb37e8b"
+                "4b0fea29286a8bba",
+                "bbad7d5b463dbef5",
+                "868d9e629fca81ce",
+                "a363c17dcf52100b"
             ]
         ]
     },
     {
-        "id": "c024b5ede3db918b",
+        "id": "5e27b9fb02579ba9",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "esp bluetooth RSSI devs",
-        "func": "// esp bluetooth RSSI devs\nlet gDebug = global.get(\"gDebug\")\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n    node.warn( [ \"[\" + node.name + \"][Info] Initialising espDevices\"]);\n\treturn;\n}\nlet espServices = global.get(\"espServices\");\nif (!espServices) {\n    node.error( [ \"[\" + node.name + \"][Error] espServices definitions not set cannot continue\"]);\n\treturn\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error( [ \"[\" + node.name + \"][Error] MACs  not set cannot continue\"]);\n\treturn\n}\nlet btrssidevices = [];\nfunction deriveSubType(name) {\n    if (name) {\n    \tif (name.includes(\"XMCT\")) {\n    \t\treturn \"bedside\";\n    \t} else if (name.includes(\"yeelight\")) {\n    \t\treturn \"candela\";\n    \t} else if (name.includes(\"ATC\")) {\n    \t\treturn \"atc\";\n    \t} else if (name.includes(\"ihoment\")) {\n    \t\treturn \"govee\";\n    \t} else {\n    \t\treturn \"unknown\";\n    \t}\n    }\n    return \"*blank*\"\n}\nObject.values(espDevices).forEach( (esp) => {\n\tObject.values(esp.devices).forEach( (btdev) => {\n\t\tconst macDev = Object.values(MACs).find( mac => mac.MAC == btdev.address);\n\t\tif (!macDev) {\n\t\t\tconst subType = deriveSubType(btdev.name);\n\t\t\tbtrssidevices.push({esp: esp.deviceName, rssi:btdev.RSSI, mac:btdev.address, name:\"MAC not in MACs\", subtype: deriveSubType(btdev.name)});\n\t\t} else {\n\t\t\tbtrssidevices.push({esp: esp.deviceName, rssi:btdev.RSSI,mac:btdev.address, name:macDev.deviceName, subtype: deriveSubType(btdev.name)});\n\t\t}\n\t});\n});\nbtrssidevices.sort( (e1,e2)  => {\n\tif (e2.mac == e1.mac) {\n\t\tif (e2.rssi >= e1.rssi) return 1;\n\t\treturn -1\n\t}\n\tif (e2.mac > e1.mac) return 1;\n\tretval = -1;\n\treturn -1;\n});\n/*\nbtrssidevices.sort( (e1,e2)  => {\n\tif (e2.mac == e1.mac) {\n\t\tif (e2.rssi >= e1.rssi) {\n\t\t\tretval = 1;\n\t\t} else {\n\t\t\tretval = -1\n\t\t}\n\t} else if (e2.mac > e1.mac {\n\t\tretval = 1\n\t} else {\n\t\tretval = -1\n\t}\n\treturn retval;\n});\n*/\nnode.warn(btrssidevices);\nflow.set(\"btrssidevices\",btrssidevices);\nconst flowTableName = \"btrssidevicetabledetails\";\nlet tableDetails = {\n    tableData:[],\n    tableDatabase: \"btrssidevices\",\n    tableDatabaseName: \"btrssidevices\",\n    tableJsonName: \"/devices/btrssidevices.json\",\n    tableType: \"object\",\n    tableKeys: [\"mac\"],\n    lastID: null,\n    tableTab: \"ESP Management\",\n    refreshableTable: false,\n\trefreshTime: 20,\n\t//recent check is less than the time speced   should be ascending order.   stale check is opposite.   stalecheck takes precedence (ie overwrites function)\n\t//recentCheck: [{\"time\": 2*60, \"color\":'#baffc9'}, {\"time\": 5*60, \"color\":'#ffffba'}],\n\t//staleCheck: [{\"time\": 12*60*60, \"color\":'#E74C3C'}, {\"time\": 1*60*60, \"color\":'#F39C12'}],\n    tableName: flowTableName,\n\taddRowInject: {\"command\":\"addRow\",\"arguments\":[[{\"Service\":\"Service\",\"mqttPrefix\":\"mqttPrefix\",\"delayTime\":12}],true],\"returnPromise\":true}\n};\ntableDetails.rowFormatter = null;\ntableDetails.cellClicker = \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'buttonClicked','button':cell.getColumn().getDefinition().title},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-thermometer-empty'></i>\\\"}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-lightbulb-o'></i>\\\"}\"\n//tableDetails.icon2Formatter = \"function(cell){return \\\"<i class='fa fa-power-off'></i>\\\"}\"\ntableDetails.icon2Formatter = \"function(cell){return \\\"<i class='material-icons md-48'>check_circle_outline</i>\\\"}\"\n//<font color=\"black\"><i class=\"material-icons md-48\">check_circle_outline</i></font> \ntableDetails.icon2Formatter =  \"function(cell){var type=cell.getData().subtype;console.log('type='+type);if ((type!='atc')&&(type!='unknown')) return \\\"<i class='fa fa-power-off'></i>\\\";return \\\"<i class='fa fa-ban'></i>\\\";}\"\n\nlet globalData = flow.get(tableDetails.tableDatabaseName);\nif (!globalData) {\n    node.error([\"[\" + node.name + \"] \", \"[Error] \" + tableDetails.tableDatabaseName + \" does not exist\",tableDetails])\n    return null;\n}\nif ( (tableDetails.tableType == \"object\" ) && ( tableDetails.tableKeys.length !=1 ) ) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + \" for object type, a single key must be specified \",tableDetails]);\n\treturn null;\n}\n\ntableDetails.lastID = 0;\nif (tableDetails.tableType == \"array\") {\n    msg.payload = globalData.map( (ele) => {\n\t    return {id: tableDetails.lastID++,...ele}\n    });\n} else {\n   msg.payload = Object.keys(globalData).map( (ele) => {\n\treturn {\"id\": tableDetails.lastID++, [tableDetails.tableKeys[0]]: ele, ...globalData[ele]}\n    }); \n}\n//btrssidevices.push({esp: esp.deviceName, rssi:btdev.RSSI, mac:btdev.address, name:macDev.deviceName, subtype: deriveSubType(btdev.name)});\nflow.set(flowTableName,tableDetails);\nmsg.ui_control =  {\n    \"tabulator\":{\n        \"columns\":[{\"title\":\"id\",\"field\":\"id\",\"width\":30, },\n\t\t\t\t//{title:\"<i class='fa fa-trash'></i>\", formatter:\"function(cell){return \\\"<i class='fa fa-trash'></i>\\\"}\", width:40, align : \"center\", cellClick: \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});cell.getRow().delete().then(()=>{this.send({ui_control:{callback:'rowDeleted'},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});console.log('Row Deleted');}).catch(()=>console.log('caught error'));}\"},\n\t\t\t\t{\"title\":\"Name\",\"field\":\"name\",\"width\":120 },\n\t\t\t\t{\"title\":\"MAC\",\"field\":\"name\",\"width\":120 },\n\t\t\t\t{\"title\":\"ESP\",\"field\":\"esp\",\"width\":120 },\n\t\t\t\t{\"title\":\"RSSI\",\"field\":\"rssi\",\"width\":60, align:\"center\" },\n\t\t\t\t{\"title\":\"Sub-type\",\"field\":\"subtype\",\"width\":90, align:\"center\"},\n\t\t\t\t{\"title\":\"PwrOn\", formatter: tableDetails.icon2Formatter, width:80, \"align\": \"center\", cellClick: tableDetails.cellClicker},\n                {\"title\":\"PwrOff\", formatter: tableDetails.icon2Formatter, width:80, \"align\": \"center\", cellClick: tableDetails.cellClicker}\n        ],\n        \"cellEdited\": \"function(cell){var rowtmp = cell.getRow().getIndex();var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'cellEdited'},payload:cell.getValue(),oldValue:cell.getOldValue(),field:cell.getColumn().getField(),id:rowtmp,rowFields:rws});}\",\n        \"layout\":\"fitColumns\",\n        \"movableColumns\":false,\n        \"groupBy\":\"\"\n    },\n}\nmsg.topic = \"initTable\";\nmsg.tableInit = {ready:true, details: flowTableName};\nif (gDebug) node.warn([\"[\" + node.name + \"] [Info] Initialising \" + tableDetails.tableDatabaseName + \" - \" + globalData.length + \" entries \"])\nreturn msg;",
+        "func": "// esp bluetooth RSSI devs\nlet gDebug = global.get(\"gDebug\")\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n\tnode.warn([\"[\" + node.name + \"][Info] Initialising espDevices\"]);\n\treturn;\n}\nlet espServices = global.get(\"espServices\");\nif (!espServices) {\n\tnode.error([\"[\" + node.name + \"][Error] espServices definitions not set cannot continue\"]);\n\treturn\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n\tnode.error([\"[\" + node.name + \"][Error] MACs  not set cannot continue\"]);\n\treturn\n}\nlet btrssidevices = [];\nfunction deriveSubType(name) {\n\tif (name) {\n\t\tif (name.includes(\"XMCT\")) {\n\t\t\treturn \"bedside\";\n\t\t} else if (name.includes(\"yeelight\")) {\n\t\t\treturn \"candela\";\n\t\t} else if (name.includes(\"ATC\")) {\n\t\t\treturn \"atc\";\n\t\t} else if (name.includes(\"ihoment\")) {\n\t\t\treturn \"govee\";\n\t\t} else {\n\t\t\treturn \"unknown\";\n\t\t}\n\t}\n\treturn \"*blank*\"\n}\nObject.values(espDevices).forEach((esp) => {\n\tObject.values(esp.devices).forEach((btdev) => {\n\t\tconst macDev = Object.values(MACs).find(mac => mac.MAC == btdev.address);\n\t\tif (!macDev) {\n\t\t\tconst subType = deriveSubType(btdev.name);\n\t\t\tbtrssidevices.push({ esp: esp.deviceName, rssi: btdev.RSSI, mac: btdev.address, name: \"MAC not in MACs\", subtype: deriveSubType(btdev.name) });\n\t\t} else {\n\t\t\tbtrssidevices.push({ esp: esp.deviceName, rssi: btdev.RSSI, mac: btdev.address, name: macDev.deviceName, subtype: deriveSubType(btdev.name) });\n\t\t}\n\t});\n});\nbtrssidevices.sort((e1, e2) => {\n\tif (e2.mac == e1.mac) {\n\t\tif (e2.rssi >= e1.rssi) return 1;\n\t\treturn -1\n\t}\n\tif (e2.mac > e1.mac) return 1;\n\treturn -1;\n});\n/*\nbtrssidevices.sort( (e1,e2)  => {\n\tif (e2.mac == e1.mac) {\n\t\tif (e2.rssi >= e1.rssi) {\n\t\t\tretval = 1;\n\t\t} else {\n\t\t\tretval = -1\n\t\t}\n\t} else if (e2.mac > e1.mac {\n\t\tretval = 1\n\t} else {\n\t\tretval = -1\n\t}\n\treturn retval;\n});\n*/\nnode.warn(btrssidevices);\nflow.set(\"btrssidevices\", btrssidevices);\nconst flowTableName = \"btrssidevicetabledetails\";\nlet tableDetails = {\n\ttableData: [],\n\ttableDatabase: \"btrssidevices\",\n\ttableDatabaseName: \"btrssidevices\",\n\ttableJsonName: \"/devices/btrssidevices.json\",\n\ttableType: \"object\",\n\ttableKeys: [\"mac\"],\n\tlastID: null,\n\ttableTab: \"ESP Management\",\n\trefreshableTable: false,\n\trefreshTime: 20,\n\t//recent check is less than the time speced   should be ascending order.   stale check is opposite.   stalecheck takes precedence (ie overwrites function)\n\t//recentCheck: [{\"time\": 2*60, \"color\":'#baffc9'}, {\"time\": 5*60, \"color\":'#ffffba'}],\n\t//staleCheck: [{\"time\": 12*60*60, \"color\":'#E74C3C'}, {\"time\": 1*60*60, \"color\":'#F39C12'}],\n\ttableName: flowTableName,\n\taddRowInject: { \"command\": \"addRow\", \"arguments\": [[{ \"Service\": \"Service\", \"mqttPrefix\": \"mqttPrefix\", \"delayTime\": 12 }], true], \"returnPromise\": true }\n};\ntableDetails.rowFormatter = null;\ntableDetails.cellClicker = \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'buttonClicked','button':cell.getColumn().getDefinition().title},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-thermometer-empty'></i>\\\"}\"\ntableDetails.icon1Formatter = \"function(cell){return \\\"<i class='fa fa-lightbulb-o'></i>\\\"}\"\n//tableDetails.icon2Formatter = \"function(cell){return \\\"<i class='fa fa-power-off'></i>\\\"}\"\ntableDetails.icon2Formatter = \"function(cell){return \\\"<i class='material-icons md-48'>check_circle_outline</i>\\\"}\"\n//<font color=\"black\"><i class=\"material-icons md-48\">check_circle_outline</i></font> \ntableDetails.icon2Formatter = \"function(cell){var type=cell.getData().subtype;console.log('type='+type);if ((type!='atc')&&(type!='unknown')) return \\\"<i class='fa fa-power-off'></i>\\\";return \\\"<i class='fa fa-ban'></i>\\\";}\"\n\nlet globalData = flow.get(tableDetails.tableDatabaseName);\nif (!globalData) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + tableDetails.tableDatabaseName + \" does not exist\", tableDetails])\n\treturn null;\n}\nif ((tableDetails.tableType == \"object\") && (tableDetails.tableKeys.length != 1)) {\n\tnode.error([\"[\" + node.name + \"] \", \"[Error] \" + \" for object type, a single key must be specified \", tableDetails]);\n\treturn null;\n}\n\ntableDetails.lastID = 0;\nif (tableDetails.tableType == \"array\") {\n\tmsg.payload = globalData.map((ele) => {\n\t\treturn { id: tableDetails.lastID++, ...ele }\n\t});\n} else {\n\tmsg.payload = Object.keys(globalData).map((ele) => {\n\t\treturn { \"id\": tableDetails.lastID++, [tableDetails.tableKeys[0]]: ele, ...globalData[ele] }\n\t});\n}\n//btrssidevices.push({esp: esp.deviceName, rssi:btdev.RSSI, mac:btdev.address, name:macDev.deviceName, subtype: deriveSubType(btdev.name)});\nflow.set(flowTableName, tableDetails);\nmsg.ui_control = {\n\t\"tabulator\": {\n\t\t\"columns\": [{ \"title\": \"id\", \"field\": \"id\", \"width\": 30, },\n\t\t//{title:\"<i class='fa fa-trash'></i>\", formatter:\"function(cell){return \\\"<i class='fa fa-trash'></i>\\\"}\", width:40, align : \"center\", cellClick: \"function(e,cell){var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});cell.getRow().delete().then(()=>{this.send({ui_control:{callback:'rowDeleted'},payload:rws,rowID:cell.getRow().getData().id,rowIndex:cell.getRow().getIndex(),row:rws});console.log('Row Deleted');}).catch(()=>console.log('caught error'));}\"},\n\t\t{ \"title\": \"Name\", \"field\": \"name\", \"width\": 120 },\n\t\t{ \"title\": \"MAC\", \"field\": \"mac\", \"width\": 120 },\n\t\t{ \"title\": \"ESP\", \"field\": \"esp\", \"width\": 120 },\n\t\t{ \"title\": \"RSSI\", \"field\": \"rssi\", \"width\": 60, align: \"center\" },\n\t\t{ \"title\": \"Sub-type\", \"field\": \"subtype\", \"width\": 90, align: \"center\" },\n\t\t{ \"title\": \"PwrOn\", formatter: tableDetails.icon2Formatter, width: 80, \"align\": \"center\", cellClick: tableDetails.cellClicker },\n\t\t{ \"title\": \"PwrOff\", formatter: tableDetails.icon2Formatter, width: 80, \"align\": \"center\", cellClick: tableDetails.cellClicker }\n\t\t],\n\t\t\"cellEdited\": \"function(cell){var rowtmp = cell.getRow().getIndex();var rowFs=cell.getRow().getCells();var rws = rowFs.map((rw)=>{return {field:rw.getField(),val:rw.getValue()}});this.send({ui_control:{callback:'cellEdited'},payload:cell.getValue(),oldValue:cell.getOldValue(),field:cell.getColumn().getField(),id:rowtmp,rowFields:rws});}\",\n\t\t\"layout\": \"fitColumns\",\n\t\t\"movableColumns\": false,\n\t\t\"groupBy\": \"\"\n\t},\n}\nmsg.topic = \"initTable\";\nmsg.tableInit = { ready: true, details: flowTableName };\nif (gDebug) node.warn([\"[\" + node.name + \"] [Info] Initialising \" + tableDetails.tableDatabaseName + \" - \" + globalData.length + \" entries \"])\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 680,
+        "x": 490,
+        "y": 860,
         "wires": [
             [
-                "c3b2bd6eeeb206ab"
+                "bbad7d5b463dbef5"
             ]
         ]
     },
     {
-        "id": "c3b2bd6eeeb206ab",
+        "id": "bbad7d5b463dbef5",
         "type": "subflow:e6dcd8331e41ae02",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
-        "x": 880,
-        "y": 680,
+        "x": 900,
+        "y": 860,
         "wires": [
             [
-                "d197065456ec0489"
+                "83bd14eac0828c4f",
+                "fe4855e30e637cfa"
             ]
         ]
     },
     {
-        "id": "d197065456ec0489",
+        "id": "83bd14eac0828c4f",
         "type": "ui_table",
-        "z": "2b0356c1d2b6f949",
-        "group": "d9110728974771ec",
+        "z": "910cb7f1e9a01c80",
+        "group": "ae7db8c4abafff28",
         "name": "BLE RSSI Table",
         "order": 1,
         "width": "8",
@@ -5205,18 +4830,18 @@
         "columns": [],
         "outputs": 1,
         "cts": true,
-        "x": 880,
-        "y": 620,
+        "x": 900,
+        "y": 800,
         "wires": [
             [
-                "c3b2bd6eeeb206ab"
+                "bbad7d5b463dbef5"
             ]
         ]
     },
     {
-        "id": "95e10dd810918c55",
+        "id": "d52545127a07bba9",
         "type": "mqtt out",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "topic": "",
         "qos": "",
@@ -5227,14 +4852,14 @@
         "correl": "",
         "expiry": "",
         "broker": "827c9488.27bf78",
-        "x": 1390,
-        "y": 180,
+        "x": 1730,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "dfd5cf1cd63129bf",
+        "id": "3e2e2df2c0fbb2d4",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "setup locations",
         "props": [
             {
@@ -5252,18 +4877,18 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 1200,
-        "y": 80,
+        "x": 760,
+        "y": 100,
         "wires": [
             [
-                "6cf774e4b0fa5bbe"
+                "1fd77b7a5e4858a6"
             ]
         ]
     },
     {
-        "id": "6cf774e4b0fa5bbe",
+        "id": "1fd77b7a5e4858a6",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Set Locations",
         "func": "//Init Esp Devices\nlet espDevices = global.get(\"espDevices\");\nif (espDevices) {\n\tnode.warn( [ \"[\" + node.name + \"][info] espDevices exists\", espDevices]);\n}\nlet msgs = [];\nlet newReboots = 0;\nif (msg.reboots) newReboots = msg.reboots;\nObject.values(espDevices).forEach((dev) => {\n    if (dev) {\n    if (dev.deviceName == \"esp32_697C\") {\n\t\tdev.location = \"Bedroom\";\n\t} else if (dev.deviceName == \"esp32_5A9C\") {\n\t\tdev.location = \"Lounge\";\n\t} else if (dev.deviceName == \"esp32_50A0\") {\n\t\tdev.location = \"Office7\";\n\t} else if (dev.deviceName == \"esp32_6D2C\") {\n\t\tdev.location = \"Office3\";\n\t} else {\n\t\tdev.location = \"Unknown\";\n\t}\n    node.warn(dev.mac + \" settting location to \" + dev.location);\n    msgs.push({topic:\"UpdateTable\",payload: {cmd:\"updateRow\", value:dev}})\n    }\n})\n//\nglobal.set(\"espDevices\",espDevices)\n\nreturn [msgs];\n",
         "outputs": 1,
@@ -5271,43 +4896,65 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1400,
-        "y": 80,
+        "x": 960,
+        "y": 100,
         "wires": [
             []
         ]
     },
     {
-        "id": "fe2d23873c0e3a3a",
+        "id": "37d1a007aed6f786",
+        "type": "gate",
+        "z": "910cb7f1e9a01c80",
+        "name": "Mac Gate",
+        "controlTopic": "control",
+        "defaultState": "closed",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "statusCmd": "status",
+        "persist": false,
+        "storeName": "memory",
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "55e8971ecb753c91"
+            ]
+        ]
+    },
+    {
+        "id": "82a7f30f3e87c327",
         "type": "debug",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "MAC ADD",
         "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1570,
-        "y": 420,
+        "x": 1610,
+        "y": 780,
         "wires": []
     },
     {
-        "id": "042109a2690f3d68",
+        "id": "8c2d51a76551a364",
         "type": "comment",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Sort out MACS",
         "info": "Should all be same case\nsave jsons\nfunction to see what problems\nchange esp mqt handler for bluetooth and esps\nchange add Macs\nsearch and change MACs lookups\n",
         "x": 230,
-        "y": 660,
+        "y": 740,
         "wires": []
     },
     {
-        "id": "e112472633923c1c",
+        "id": "63776f98857a39c9",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "",
         "props": [
             {
@@ -5325,18 +4972,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1580,
-        "y": 20,
+        "x": 1140,
+        "y": 40,
         "wires": [
             [
-                "54cce8fe28afc11f"
+                "a519735863ec22e5"
             ]
         ]
     },
     {
-        "id": "54cce8fe28afc11f",
+        "id": "a519735863ec22e5",
         "type": "function",
-        "z": "2b0356c1d2b6f949",
+        "z": "910cb7f1e9a01c80",
         "name": "Check macs for duplicates",
         "func": "let MACs = global.get(\"MACs\")\nlet lcase = 0;\nlet ucase = 0;\nlet both = 0;\nlet dups = {}\nObject.keys(MACs).forEach( (mac) => {\n\tlcaseMac = mac.toLowerCase();\n\tucaseMac = mac.toUpperCase();\n\tif (mac == lcaseMac) {\n\t\tlcase++;\n\t\tif (mac != ucaseMac) {\n\t\t\tif (MACs[ucaseMac]){\n\t\t\t\tboth++;\n\t\t\t\tdups[ucaseMac] = MACs[mac];\n\t\t\t}\n\t\t}\n\t}\n\tif ( (mac == ucaseMac)  && (mac != lcaseMac) ) {\n\t\tucase++;\n\t\t//if (MACs[lcaseMac]) both++;\n\t}\n});\nnode.warn( [lcase + \" lowercase macs, \" + ucase + \" uppercase macs, \"  + both + \" dups\" , dups]);\nreturn msg;",
         "outputs": 1,
@@ -5344,66 +4991,17 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1660,
-        "y": 80,
+        "x": 1220,
+        "y": 100,
         "wires": [
             []
         ]
     },
     {
-        "id": "33018bcdb15ad4ac",
-        "type": "gate",
-        "z": "2b0356c1d2b6f949",
-        "name": "Mac Gate",
-        "controlTopic": "control",
-        "defaultState": "closed",
-        "openCmd": "open",
-        "closeCmd": "close",
-        "toggleCmd": "toggle",
-        "defaultCmd": "default",
-        "statusCmd": "status",
-        "persist": false,
-        "storeName": "memory",
-        "x": 480,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e9fe4c3b15776ece",
-        "type": "link out",
-        "z": "2b0356c1d2b6f949",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "fe6245113dbd7b5b"
-        ],
-        "x": 155,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "fdf4ab83e29c86f2",
-        "type": "link in",
-        "z": "2b0356c1d2b6f949",
-        "name": "",
-        "links": [
-            "2385783bf040cf0c"
-        ],
-        "x": 495,
-        "y": 440,
-        "wires": [
-            [
-                "d91ede56b1adfc96"
-            ]
-        ]
-    },
-    {
-        "id": "09fa0c8321921631",
+        "id": "c3e540e1f0fc4e21",
         "type": "inject",
-        "z": "2b0356c1d2b6f949",
-        "name": "Start 1s",
+        "z": "910cb7f1e9a01c80",
+        "name": "Start after 1s",
         "props": [
             {
                 "p": "payload"
@@ -5419,20 +5017,40 @@
         "onceDelay": "1",
         "topic": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 620,
+        "x": 110,
+        "y": 680,
         "wires": [
             [
-                "839cbbf78776602b"
+                "b04611cbd9185e03"
             ]
         ]
     },
     {
-        "id": "f3ff67c9724df02e",
+        "id": "fe4855e30e637cfa",
+        "type": "function",
+        "z": "910cb7f1e9a01c80",
+        "name": "BT Device handler",
+        "func": "//BT Device handler\nlet gDebug = global.get(\"gDebug\")\n//gDebug = true;\nfunction deriveSubType(name) {\n    if (name) {\n        if (name.includes(\"XMCT\")) {\n            return \"bedside\";\n        } else if (name.includes(\"yeelight\")) {\n            return \"candela\";\n        } else if (name.includes(\"ATC\")) {\n            return \"atc\";\n        } else if (name.includes(\"ihoment\")) {\n            return \"govee\";\n        } else {\n            return \"unknown\";\n        }\n    }\n    return \"*blank*\"\n}\nlet BluetoothDeviceDetails = global.get(\"BluetoothDeviceDetails\");\nif (!BluetoothDeviceDetails) {\n    node.error([\"[\" + node.name + \"][Error] BluetoothDeviceDetails not set cannot continue\"]);\n    return null;\n}\nlet MACs = global.get(\"MACs\");\nif (!MACs) {\n    node.error([\"[\" + node.name + \"][Error] MACs not set cannot continue\"]);\n    return null;\n}\n\nlet espDevices = global.get(\"espDevices\");\nif (!espDevices) {\n    node.error([\"[\" + node.name + \"][Error] espDevices not set cannot continue\"]);\n    return null;\n}\nlet macObject = null;\nlet devNameInput = msg.payload.deviceName;\nlet macInput = msg.payload.MAC;\nlet cmdInput = msg.payload.cmd;\nif ((msg.hasOwnProperty(\"ui_control\")) && (msg.ui_control.hasOwnProperty(\"callback\")) &&\n    (msg.ui_control.callback == \"buttonClicked\")) {\n    if ((!msg.row.find(rw => rw.field == \"mac\")) || (!msg.ui_control.button)) {\n        node.error([\"[\" + node.name + \"][Error] Msg does have button or row\", msg]);\n        return null;\n    }\n    macInput = msg.row.find(rw => (rw.field == \"mac\")).val;\n    cmdInput = msg.ui_control.button.toLowerCase();\n    if (cmdInput == \"pwron\") cmdInput = \"on\";\n    if (cmdInput == \"pwroff\") cmdInput = \"off\";\n} else {\n    if ((!msg.payload.deviceName) && (!msg.payload.MAC)) {\n        if (gDebug) node.warn([\"[\" + node.name + \"][Error] Payload does not specify a device or a MAC\", msg]);\n        return null;\n    }\n}\nif (macInput) {\n    macObject = MACs[macInput];\n    node.warn([\"DEBUG1 \", macInput, macObject, msg]);\n} else {\n    macObject = Object.values(MACs).find(dev => dev.deviceName == devNameInput);\n    node.warn([\"DEBUG2 \", macInput, macObject, msg]);\n}\nif (!macObject) {\n    node.error([\"[\" + node.name + \"][Error] BT Device not found - deviceName=\" +\n        devNameInput + \" macInput=\" + macInput, msg]);\n    return null;\n}\nif (macObject.type != \"BLE\") {\n    node.error([\"[\" + node.name + \"][Error] BT Device not a BLE  type=\" + macObject.type, msg, macObject]);\n    return null;\n}\nif (gDebug) node.warn(macObject);\nlet BLEHosts = [];\nObject.values(espDevices).forEach((esp) => {\n    Object.values(esp.devices).forEach((dev) => {\n        if (dev.address == macObject.MAC.toLowerCase()) {\n            BLEHosts.push({ esp: esp.deviceName, RSSI: dev.RSSI, subType: deriveSubType(dev.name) });\n        }\n    });\n});\nif (BLEHosts.length == 0) {\n    node.error([\"[\" + node.name + \"][Error] No Hosts found\", msg, macObject, espDevices]);\n    return null;\n}\nBLEHosts.sort((a, b) => { return (a.RSSI > b.RSSI) ? -1 : 1 });\nBLEHosts.forEach(host => node.warn(host.esp + \" \" + host.RSSI + \" \" + host.subType));\nconst BTDeets = BluetoothDeviceDetails[BLEHosts[0].subType];\nif (!BTDeets) {\n    if (gDebug) node.warn([\"[\" + node.name + \"][Error] BT Device subtype does not exist in BT Details \" + BLEHosts[0].subType, msg, macObject, BluetoothDeviceDetails]);\n    return null;\n}\n\nconst validCommand = BTDeets.validCommands.find(v => v.cmd == cmdInput);\nif (!validCommand) {\n    node.error([\"[\" + node.name + \"][Error] \" + cmdInput + \" is not a valid commmand \", BTDeets, msg]);\n    return null;\n}\nlet blueToothMessage = {};\nblueToothMessage.topic = \"toesp/\" + BLEHosts[0].esp + \"/execute\";\nblueToothMessage.payload = {};\nblueToothMessage.payload.cmd = cmdInput;\nblueToothMessage.payload.mac = macObject.MAC;\nblueToothMessage.payload.suuid = BTDeets.SERVICE_UUID;\nblueToothMessage.payload.cuuid = BTDeets.CONTROL_UUID;\nblueToothMessage.payload.nuuid = BTDeets.NOTIFY_UUID;\nblueToothMessage.payload.commands = validCommand.bits[0];\nblueToothMessage.payload.commands2 = validCommand.bits[1];\n\nreturn blueToothMessage;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 780,
+        "wires": [
+            [
+                "1decf208fbb73f9f",
+                "d52545127a07bba9"
+            ]
+        ]
+    },
+    {
+        "id": "1decf208fbb73f9f",
         "type": "debug",
-        "z": "2b0356c1d2b6f949",
-        "name": "ESP MSGS",
-        "active": false,
+        "z": "910cb7f1e9a01c80",
+        "name": "Bluetooth msg",
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -5440,8 +5058,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1635,
-        "y": 306,
+        "x": 1600,
+        "y": 840,
         "wires": []
     },
     {
